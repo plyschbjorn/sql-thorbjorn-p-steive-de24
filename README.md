@@ -1,1 +1,1 @@
-# sql-thorbjorn-p-steive-de24
+# SQL course using duckdb
