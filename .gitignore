@@ -168,4 +168,5 @@ cython_debug/
 # duckdb
 *.wal
 
-*.DS_Store
+# mac
+.DS_Store
