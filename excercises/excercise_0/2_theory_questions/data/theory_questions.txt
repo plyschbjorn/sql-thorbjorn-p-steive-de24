@@ -1,0 +1,115 @@
+Here are detailed answers to the SQL and DuckDB theory questions:
+
+---
+
+A) What is SQL, and why is it important in relational databases?
+SQL (Structured Query Language) is a standard programming language designed for managing and manipulating relational databases. 
+It allows users to query, update, insert, and delete data and manage database structures.
+
+Importance:
+- Data Management: SQL provides tools for efficiently managing structured data.
+- Standardization: Most relational databases use SQL, making skills transferrable.
+- Data Analysis: It simplifies retrieving specific data using queries.
+- Automation: Enables automation of repetitive database tasks through scripts.
+
+---
+
+B) Explain the difference between HAVING and WHERE clauses.
+- WHERE Clause:
+  - Filters rows before any groupings are made in a query.
+  - Applies to individual rows.
+  - Example: `SELECT * FROM employees WHERE salary > 50000;`
+
+- HAVING Clause:
+  - Filters grouped data after an aggregation is performed.
+  - Applies to group-level data.
+  - Example: `SELECT department, AVG(salary) FROM employees GROUP BY department HAVING AVG(salary) > 60000;`
+
+---
+
+C) Explain the purpose of the LIMIT or TOP clause in a SQL query.
+The LIMIT (in MySQL, PostgreSQL, DuckDB, etc.) or TOP (in SQL Server) clause restricts the number of rows returned by a query.
+
+Purpose:
+- Fetching a subset of data for analysis or display.
+- Improving performance by avoiding retrieval of unnecessary rows.
+
+Example:
+```
+SELECT * FROM orders LIMIT 10;  -- Fetch the first 10 rows
+```
+
+---
+
+D) What are the primary functions of the Data Definition Language (DDL) in SQL?
+DDL (Data Definition Language)** commands define and manage the structure of a database.
+
+Primary Functions:
+1. CREATE: To create new databases, tables, or views.
+2. ALTER: To modify existing database objects.
+3. DROP: To delete database objects.
+4. TRUNCATE: To remove all rows from a table without logging individual row deletions.
+
+---
+
+E) Explain the differences between the Data Manipulation Language (DML) and Data Definition Language (DDL).
+| Feature                 | DML                                         | DDL                                      |
+|-------------------------|---------------------------------------------|------------------------------------------|
+| Purpose                 | Manipulates data within database objects.   | Defines and manages database structures. |
+| Commands                | SELECT, INSERT, UPDATE, DELETE              | CREATE, ALTER, DROP, TRUNCATE            |
+| Execution Impact        | Affects data only                           | Affects the schema/structure.            |
+| Transactional           | Usually transactional (can be rolled back). | Generally non-transactional.             |
+
+---
+
+F) What type of dot commands are there in DuckDB?
+Dot commands in DuckDB are special commands (starting with .) used for interacting with the DuckDB shell. Examples include:
+- .help: Lists all available commands.
+- .exit or .quit: Closes the DuckDB shell.
+- .tables: Lists all tables in the current database.
+- .schema table_name: Displays the schema of a specific table.
+- .read csv_file: Reads a CSV file directly into DuckDB.
+- .mode csv: Sets output format to CSV.
+
+---
+
+G) What makes DuckDB unique compared to other databases?
+Key Features of DuckDB:
+1. In-Memory Analytics: Designed for high-performance analytics with in-memory processing.
+2. Columnar Storage: Optimized for analytical queries on large datasets.
+3. Embedded Nature: Runs within applications without needing a server.
+4. Ease of Use: Simple setup and integration with tools like Python and R.
+5. Optimized for OLAP: Ideal for Online Analytical Processing (OLAP) rather than transactional processing (OLTP).
+
+---
+
+H) Is DuckDB suitable for real-time data processing?
+No, DuckDB is optimized for analytical workloads (OLAP) and not for real-time or transactional processing (OLTP). 
+It’s best for scenarios where data is analyzed in batches rather than requiring immediate updates and responses.
+
+---
+
+I) Difference between read_csv and read_csv_auto
+- read_csv: Requires specifying the schema manually when importing a CSV.
+- read_csv_auto: Automatically detects the schema of the CSV file and infers column data types.
+
+Example:
+
+-- Manual schema definition
+CREATE TABLE data (id INTEGER, name TEXT, value DOUBLE);
+COPY data FROM 'file.csv' (DELIMITER ',', HEADER TRUE);
+
+-- Auto-detection
+CREATE TABLE data AS SELECT * FROM read_csv_auto('file.csv');
+
+---
+
+J) What is the purpose and advantages of using an IDE such as DBeaver?
+Purpose: An IDE like DBeaver provides a graphical interface for managing databases, running queries, and visualizing data.
+
+Advantages:
+1. Ease of Use: Point-and-click interface simplifies database interactions.
+2. Query Debugging: Integrated tools for running and debugging queries.
+3. Visualization: Charts, ER diagrams, and table views enhance understanding.
+4. Cross-Platform: Supports multiple database systems (PostgreSQL, MySQL, DuckDB, etc.).
+5. Efficiency: Features like autocomplete, syntax highlighting, and history tracking speed up development.
