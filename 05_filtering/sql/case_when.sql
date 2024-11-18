@@ -11,7 +11,7 @@ SELECT
 FROM 
 	main.data_jobs ;
 
-
+BEGIN TRAN
 UPDATE main.data_jobs 
 SET
 	experience_level = 
@@ -21,5 +21,7 @@ SET
 		WHEN experience_level = 'EN' THEN 'Entry level'
 		WHEN experience_level = 'EX' THEN 'Expert'
 	END;
+
+COMMIT;
 
 SELECT DISTINCT experience_level FROM main.data_jobs ;
