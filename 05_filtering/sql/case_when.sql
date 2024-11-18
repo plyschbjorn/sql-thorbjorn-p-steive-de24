@@ -11,7 +11,7 @@ SELECT
 FROM 
 	main.data_jobs ;
 
-BEGIN TRAN
+
 UPDATE main.data_jobs 
 SET
 	experience_level = 
