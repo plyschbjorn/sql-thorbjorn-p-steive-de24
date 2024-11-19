@@ -12,6 +12,7 @@ FROM
 	main.data_jobs ;
 
 BEGIN TRANSACTION
+
 UPDATE main.data_jobs 
 SET
 	experience_level = 
@@ -23,7 +24,9 @@ SET
 	END;
 
 COMMIT;
+
 ROLLBACK;
+
 ABORT;
 
 SELECT DISTINCT experience_level FROM main.data_jobs ;
