@@ -29,3 +29,6 @@ FROM
 
 
 SELECT  * FROM main.cleaned_food cf ;
+
+
+select * from table main.food;
