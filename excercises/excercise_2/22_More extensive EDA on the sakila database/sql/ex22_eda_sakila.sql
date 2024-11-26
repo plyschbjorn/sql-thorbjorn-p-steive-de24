@@ -91,10 +91,10 @@ LIMIT 10;
 
 -- h) Retrieve a list of all customers and what films they have rented.
 
-SELECT * FROM main.rental re;
-SELECT * FROM main.customer cu;
-SELECT * FROM main.film fi ;
-SELECT * FROM main.inventory i;
+SELECT * FROM main.rental re; -- 16 044
+SELECT * FROM main.customer cu; --599
+SELECT * FROM main.film fi ; --1000
+SELECT * FROM main.inventory i; --4581
 
 SELECT cu.customer_id,cu.first_name,cu.last_name, fi.title 
 FROM main.rental re
@@ -105,5 +105,22 @@ ORDER BY cu.customer_id;
 
 -- i) Make a more extensive EDA of your choice on the Sakila database.
 
+
+-- Movies nobody rented yet--
+SELECT *
+FROM main.film f
+LEFT JOIN main.inventory i ON i.film_id = f.film_id
+WHERE i.film_id IS NULL; -- 42
+
+SELECT *
+FROM main.film f
+RIGHT JOIN main.inventory i ON i.film_id = f.film_id
+WHERE i.film_id IS NULL; -- 42
+
+
+LEFT JOIN main.customer cu ON re.customer_id = cu.customer_id
+LEFT JOIN main.inventory i ON i.inventory_id = re.inventory_id 
+LEFT JOIN main.film fi ON i.film_id = fi.film_id
+ORDER BY cu.customer_id;
 
 -- more EDAs left for reader as I don't want to take away all fun for you
