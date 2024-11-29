@@ -1,0 +1,94 @@
+
+-- a) What is the difference between INNER JOIN and INTERSECT?
+
+* INNER JOIN kombinerar rader från två tabeller baserat på matchande villkor 
+  (t.ex. en kolumn eller uttryck) och returnerar resultatet där det finns en matchning i båda tabellerna.
+* INTERSECT är en set operation som returnerar endast de rader som finns gemensamt mellan två resultatmängder. 
+  Detta innebär att raderna i båda resultatmängderna måste vara identiska för att inkluderas i resultatet.
+
+
+-- INNER JOIN
+SELECT a.column1, b.column2
+FROM table_a a
+INNER JOIN table_b b ON a.id = b.id;
+
+-- INTERSECT
+SELECT column1 FROM table_a
+INTERSECT
+SELECT column1 FROM table_b;
+
+
+******************************************************
+
+-- b) When are the purposes of set operations?
+
+Set-operationer som UNION, INTERSECT och EXCEPT används för att:
+1. Kombinera resultat från flera SQL-satser.
+2. Jämföra och analysera överlappningar eller skillnader mellan resultatmängder.
+3. Manipulera data utan att explicit specificera relationer mellan tabellerna, 
+   vilket är användbart när resultatmängderna redan är strukturerade på ett kompatibelt sätt.
+
+******************************************************
+
+-- c) What are the main difference between joins and set operations?
+
+- Joins:
+  * Kräver ett explicit villkor (t.ex. nycklar eller kolumner) för att kombinera data.
+  * Returnerar kombinationer av rader från tabeller baserat på det givna villkoret.
+  * Används för att skapa en relation mellan tabeller.
+
+- Set operations:
+  * Arbetar med hela resultatmängder istället för att matcha specifika kolumner.
+  * Returnerar data baserat på mängdlära; Union, Intersection.
+  * Kräver att resultatmängderna har samma kolumner och datatyper.
+
+******************************************************
+
+-- d) When is set operators used contra logical operators?
+
+- Set operatorer används när du hanterar hela resultatmängder och vill utföra operationer som:
+  * Kombinera resultat (UNION)
+  * Hitta överlappande rader (INTERSECT)
+  * Hitta skillnader mellan olika resultat (EXCEPT)
+
+- Logiska operatorer som AND, OR, NOT används för att specificera villkor i WHERE, ON -klausuler.
+
+******************************************************
+
+-- e) How to achieve this using set operations in SQL, where A and B are result sets.
+
+Bilden visar skillnaden A - B , där endast rader i  A som inte finns i  B inkluderas. 
+
+SELECT * FROM A
+EXCEPT
+SELECT * FROM B;
+
+
+******************************************************
+
+-- f) How to achieve this using set operations in SQL, where A and B are result sets.
+
+Bilden visar överlappningen A och B , där allt skall inkluderas utom det som överlappas.
+
+Detta görs genom att kombinera A och B med UNION och sen ta bort överlappningen INTERSECT med EXCEPT.
+
+(SELECT * FROM A
+UNION
+SELECT * FROM B)
+
+EXCEPT
+
+(SELECT * FROM A
+INTERSECT
+SELECT * FROM B);
+
+
+******************************************************
+
+-- g) Spelar ordningen av JOINs roll när tre eller fler tabeller kombineras?
+
+Ja, ordningen kan spela roll på grund av:
+1. PRESTANDA: SQL-optimeraren kan påverkas av hur tabellerna kombineras, och ordningen kan resultera i olika exekveringsplaner.
+2. RESULTAT: Om du använder OUTER JOIN (t.ex. LEFT eller RIGHT JOIN) kan ordningen påverka vilka rader som inkluderas i resultatet, eftersom det beror på vilken tabell som är "vänster" respektive "höger".
+3. LOGIK: Med INNER JOIN påverkar inte ordningen resultatet (då de bara returnerar matchande rader). Men för OUTER JOINs är ordningen kritisk.
+
