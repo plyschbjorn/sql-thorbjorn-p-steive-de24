@@ -1,1 +1,62 @@
-a) WHAT ARE THE MAIN CATEGORIES OF SQL COMMANDS?* Data Query Language (DQL): Anv�nds f�r att fr�ga och h�mta data fr�n databasen.  -- SELECT  * Data Manipulation Language (DML): F�r att hantera data i tabeller:  -- INSERT  -- UPDATE  -- DELETE* Data Definition Language (DDL): F�r att definiera och �ndra databasens struktur:  -- CREATE  -- ALETER  -- DROP  * Data Control Language (DCL): F�r att hantera �tkomst till databasen:  -- GRANT  -- REVOKE* Transaction Control Language (TCL): F�r att hantera transaktioner:  -- COMMIT  -- ROLLBACK  -- SAVEPOINTb) Explain the difference between HAVING and WHERE clauses?* WHERE: Anv�nds f�r att filtrera rader innan gruppering sker i en fr�ga.* HAVING: Anv�nds f�r att filtrera grupper efter gruppering.c) How to make sure you delete the correct rows?* Granska med SELECT: K�r f�rst en SELECT-fr�ga med samma villkor som din DELETE f�r att verifiera vilka rader som p�verkas.* Anv�nd WHERE-klausul: Inkludera ett tydligt och specifikt villkor.* Anv�nd en transaktion: Om databasen st�der transaktioner, kan du anv�nda BEGIN TRANSACTION och granska innan COMMIT.d) How do you retrieve unique values in a column?* Anv�nd nyckelordet DISTINCT i din SELECT-satse) What does data transformation mean?f) How do you create a new row in a table?* Anv�nd INSERT INTO-kommandot:g) What happens if you omit the WHERE clause in an UPDATE statement?h) What happens if you omit the WHERE clause in a DELETE statement?i) What is a conditional statement in SQL, and can it be used with SELECT?
+
+
+a) WHAT ARE THE MAIN CATEGORIES OF SQL COMMANDS?
+
+* Data Query Language (DQL): Används för att fråga och hämta data från databasen.
+  -- SELECT
+  
+* Data Manipulation Language (DML): För att hantera data i tabeller:
+  -- INSERT
+  -- UPDATE
+  -- DELETE
+
+* Data Definition Language (DDL): För att definiera och ändra databasens struktur:
+  -- CREATE
+  -- ALTER
+  -- DROP
+  
+* Data Control Language (DCL): För att hantera åtkomst till databasen:
+  -- GRANT
+  -- REVOKE
+
+* Transaction Control Language (TCL): För att hantera transaktioner:
+  -- COMMIT
+  -- ROLLBACK
+  -- SAVEPOINT
+
+b) Explain the difference between HAVING and WHERE clauses?
+* WHERE: Används för att filtrera rader innan gruppering sker i en fråga.
+* HAVING: Används för att filtrera grupper efter gruppering.
+
+c) How to make sure you delete the correct rows?
+* Granska med SELECT: Kör först en SELECT-fråga med samma villkor som din DELETE för att verifiera vilka rader som påverkas.
+* Använd WHERE-klausul: Inkludera ett tydligt och specifikt villkor.
+* Använd en transaktion: Om databasen stöder transaktioner, kan du använda BEGIN TRANSACTION och granska innan COMMIT.
+
+d) How do you retrieve unique values in a column?
+
+* Använd nyckelordet DISTINCT i din SELECT-sats
+
+e) What does data transformation mean?
+
+Datatransformation innebär att manipulera data för att passa ett specifikt format eller krav. I SQL kan detta inkludera:
+
+ -- Ändra datatyper.
+ -- Kombinera kolumner med CONCAT.
+
+f) How do you create a new row in a table?
+* Använd INSERT INTO-kommandot:
+  -- INSERT INTO table_name (column1, column2, column3) 
+  -- VALUES (value1, value2, value3);
+
+g) What happens if you omit the WHERE clause in an UPDATE statement?
+
+* Om du utelämnar WHERE i en UPDATE-sats uppdateras alla rader i tabellen.
+
+h) What happens if you omit the WHERE clause in a DELETE statement?
+
+* Om du utelämnar WHERE i en DELETE-sats tas alla rader i tabellen bort.
+
+i) What is a conditional statement in SQL, and can it be used with SELECT?
+
+* Ett villkorsuttryck i SQL används för att skapa logik i frågor, ofta med CASE-satsen. Det kan användas i en SELECT-sats.
