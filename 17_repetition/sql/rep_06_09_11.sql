@@ -1,4 +1,4 @@
-CREATE schema if not exists sql;
+CREATE SCHEMA IF NOT EXISTS sql;
 
 select * from information_schema.schemata;
 
@@ -18,52 +18,26 @@ CREATE TABLE IF NOT EXISTS sql.lectures (
 
 );
 
-INSERT INTO
-    sql.lectures
+INSERT INTO sql.lectures
 VALUES
-    (
-        1,
-        'intro, query, ingest csv, CLI, dbeaver, table, select',
-        '00-04',
-        TRUE
-    ),
-    (
-        2,
-        'filtering, CRUD, conditionals, sorting, functions, grouping',
-        '05-08',
-        TRUE
-    ),
-    (
-        3,
-        'grouping, strings, regexp, set operations, performing joins, querying multiple tables',
-        '09-11',
-        FALSE
-    ),
-    (
-        4,
-        'window functions, CTEs, connect duckdb to Python, data security, SQL injection',
-        '12-14',
-        FALSE
-    ),
-    (
-        5,
-        'duckdb tips and tricks, repetition',
-        '15-16',
-        TRUE
-    ),
-    (6, 'exam', '17', FALSE);
+    (1,'intro, query, ingest csv, CLI, dbeaver, table, select','00-04',TRUE),
+    (2,'filtering, CRUD, conditionals, sorting, functions, grouping','05-08',TRUE),
+    (3,'grouping, strings, regexp, set operations, performing joins, querying multiple tables','09-11',FALSE),
+    (4,'window functions, CTEs, connect duckdb to Python, data security, SQL injection','12-14',FALSE),
+    (5,'duckdb tips and tricks, repetition','15-16',TRUE),
+    (6,'exam','17',FALSE);
 
-INSERT INTO
-    sql.excercises
+INSERT INTO sql.excercises
 VALUES
-    (1, '0', TRUE),
-    (2, '1', TRUE),
-    (3, '2', TRUE),
-    (4, '3', TRUE),
-    (5, 'old exam', TRUE);
+    (1,'0',TRUE),
+    (2,'1',TRUE),
+    (3,'2',TRUE),
+    (4,'3',TRUE),
+    (5,'old exam',TRUE);
 
    
 ********************************
+
 SELECT * FROM sql.lectures;
 
 SELECT * FROM sql.excercises;
